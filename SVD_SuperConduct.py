@@ -27,7 +27,7 @@ lasso = Lasso(alpha=35).fit(X_train, y_train)
 
 tree_reg= DecisionTreeRegressor().fit(X_train, y_train)
 
-forest = RandomForestRegressor(n_estimators= 100, random_state= 0, n_jobs= -1).fit(X_train, y_train)
+forest = RandomForestRegressor(n_estimators= 100, random_state= 0, n_jobs= -1).fit(X_train, y_train)# -1 means all availabe cores
 
 gbrt = GradientBoostingRegressor(random_state=0, max_depth=15).fit(X_train, y_train)
 
