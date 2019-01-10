@@ -7,8 +7,11 @@ from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.neural_network import MLPRegressor
 import time
 t = time.time()
-
-train_path = "/home/axis/Desktop/ml_work/intro_to_ml/Data sets/superconduct/train.csv"
+import sys
+if sys.platform == 'darwin':
+    train_path = "/Users/mqa/Desktop/Dev/ML/introduction_to_ml_with_python/Data sets/superconduct/train.csv"
+else:
+    train_path = "/home/axis/Desktop/ml_work/intro_to_ml/Data sets/superconduct/train.csv"
 
 
 X = pd.read_csv(train_path)
@@ -50,7 +53,7 @@ X_train_scaled = (X_train - mean_on_train)/std_on_train
 # Scaling the test set(the same transformation on the test set)
 X_test_scaled = ((X_test - mean_on_train)/std_on_train)
 
-mlpr = MLPRegressor(max_iter=1000, alpha=1, random_state=0).fit(
+mlpr = MLPRegressor(max_iter=1000, alpha=1, random_state=0, activation='relu').fit(
     X_train_scaled, y_train)
 
 print("The score of LR:{:.2f}".format(lr.score(X_test, y_test)))
