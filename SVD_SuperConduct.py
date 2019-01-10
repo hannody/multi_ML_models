@@ -31,7 +31,7 @@ forest = RandomForestRegressor(n_estimators= 100, random_state= 0, n_jobs= -1).f
 
 gbrt = GradientBoostingRegressor(random_state=0, max_depth=15).fit(X_train, y_train)
 
-mlpr = MLPRegressor().fit(X_train, y_train)
+mlpr = MLPRegressor(activation= 'relu', solver= "lbfgs", alpha= 0.01).fit(X_train, y_train)
 
 print("The score of LR:{:.2f}".format(lr.score(X_test, y_test)))
 
