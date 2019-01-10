@@ -4,7 +4,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.ensemble import GradientBoostingRegressor 
-from 
+from sklearn.neural_network import MLPRegressor
 import time
 t = time.time()
 
@@ -31,6 +31,8 @@ forest = RandomForestRegressor(n_estimators= 100, random_state= 0, n_jobs= -1).f
 
 gbrt = GradientBoostingRegressor(random_state=0, max_depth=15).fit(X_train, y_train)
 
+mlpr = MLPRegressor().fit(X_train, y_train)
+
 print("The score of LR:{:.2f}".format(lr.score(X_test, y_test)))
 
 print("The score of ridge:{:.2f}".format(ridge.score(X_test, y_test)))
@@ -43,15 +45,8 @@ print("The score of RandomForestRegressor:{:.2f}".format(forest.score(X_test, y_
 
 print("The score of GradientBoostingRegressor:{:.2f}".format(gbrt.score(X_test, y_test)))
 
+print("The score of Nural Network/MLPRegressor:{:.2f}".format(mlpr.score(X_test, y_test)))
+
 print("Time taken is :{:.2f}".format((time.time() - t)/60))
 
-#import graphviz
-#from sklearn.tree import export_graphviz
-#from IPython.display import display
 
-#export_graphviz(tree_reg, out_file="tree.dot")
-
-
-#with open("tree.dot") as f:
-#    dot_grapgh = f.read()
-#display(graphviz.Source(dot_grapgh))
