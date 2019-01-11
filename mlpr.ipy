@@ -1,0 +1,84 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from sklearn.neural_network import MLPRegressor\n",
+    "import sys\n",
+    "import pandas as pd\n",
+    "import time\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "t = time.time()\n",
+    "if sys.platform == 'darwin':\n",
+    "    train_path = \"/Users/mqa/Desktop/Dev/ML/introduction_to_ml_with_python/Data sets/superconduct/train.csv\"\n",
+    "else:\n",
+    "    train_path = \"/home/axis/Desktop/ml_work/intro_to_ml/Data sets/superconduct/train.csv\"\n",
+    "\n",
+    "\n",
+    "X = pd.read_csv(train_path)\n",
+    "\n",
+    "y = X[\"critical_temp\"]\n",
+    "\n",
+    "X = X.drop([\"critical_temp\"], axis=1)\n",
+    "\n",
+    "X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "mlpr = MLPRegressor(max_iter=1000, alpha=1, random_state=0, activation='relu').fit(\n",
+    "    X_train_scaled, y_train)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print(\"The score of Nural Network/MLPRegressor:{:.2f}\".format(mlpr.score(X_test_scaled, y_test)))\n",
+    "\n",
+    "print(\"Time taken is :{:.2f}\".format((time.time() - t)/60))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "print('hi')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}

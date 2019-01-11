@@ -1,3 +1,4 @@
+import sys
 import pandas as pd
 from sklearn.linear_model import LinearRegression, Ridge, Lasso, LogisticRegressionCV
 from sklearn.model_selection import train_test_split
@@ -7,7 +8,6 @@ from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.neural_network import MLPRegressor
 import time
 t = time.time()
-import sys
 if sys.platform == 'darwin':
     train_path = "/Users/mqa/Desktop/Dev/ML/introduction_to_ml_with_python/Data sets/superconduct/train.csv"
 else:
@@ -53,7 +53,7 @@ X_train_scaled = (X_train - mean_on_train)/std_on_train
 # Scaling the test set(the same transformation on the test set)
 X_test_scaled = ((X_test - mean_on_train)/std_on_train)
 
-mlpr = MLPRegressor(max_iter=1000, alpha=1, random_state=0, activation='relu').fit(
+mlpr = MLPRegressor(max_iter=400, alpha=0.001, random_state=0, activation='tanh', solver='lbfgs').fit(
     X_train_scaled, y_train)
 
 print("The score of LR:{:.2f}".format(lr.score(X_test, y_test)))
